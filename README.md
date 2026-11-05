@@ -48,6 +48,6 @@
 Clone the repository and launch the script directly:
 
 ```bash
-git clone [https://github.com/AymenChebabhi/mysh.git](https://github.com/AymenChebabhi/mysh.git)
+git clone https://github.com/AymenChebabhi/mysh.git
 cd mysh
 python mycli.py
