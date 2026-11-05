@@ -1,84 +1,41 @@
-\# mysh — Lightweight Multi-Repository Management Shell
+# mysh
 
+<p align="center">
+  <strong>A lightweight, zero-dependency interactive REPL and batch Git workspace manager built from scratch in Python.</strong>
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white" alt="Python Version" />
+  <img src="https://img.shields.io/badge/Git-Plumbing%20API-F05032?style=flat&logo=git&logoColor=white" alt="Git" />
+  <img src="https://img.shields.io/badge/Dependencies-0%20(Standard%20Lib)-success" alt="Dependencies" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey" alt="Platform" />
+</p>
 
-A modular interactive shell built from first principles in pure Python (zero external dependencies). Designed to streamline batch operations and working-tree monitoring across nested Git repositories.
+---
 
+## Overview
 
+`mysh` is a custom terminal shell designed to eliminate the overhead of managing dozens of scattered local repositories. Built purely using standard-library primitives, it acts as an interactive REPL with built-in recursive workspace discovery and batch execution capabilities.
 
-\---
+### Key Highlights
+- **Zero Third-Party Dependencies:** Powered strictly by Python's built-in `os`, `sys`, and `subprocess` modules.
+- **$O(1)$ Command Dispatch Table:** Decoupled execution architecture eliminating messy conditional chains.
+- **Pruned Tree Traversal:** Recursive directory scanner (`os.walk`) engineered to detect `.git` roots while pruning internal trees to optimize scan performance.
+- **Git Porcelain Interception:** Communicates directly with machine-readable Git output streams (`--porcelain`, `--show-current`) for consistent parsing.
+- **Native OS Fallback:** Transparently delegates non-internal commands to the host operating system.
 
+---
 
-
-\## Features
-
-
-
-\- \*\*Interactive REPL:\*\* Built-in command prompt dynamically tracking the Current Working Directory (CWD).
-
-\- \*\*Dispatch Table Architecture:\*\* Modular, O(1) command lookup eliminating nested condition branching.
-
-\- \*\*Recursive Repo Discovery (`repos`):\*\* Pruned depth-first filesystem traversal via `os.walk` to identify nested repositories without scanning `.git` internals.
-
-\- \*\*Plumbing-Level Status Checks:\*\* Queries Git using machine-readable porcelain flags (`git status --porcelain`, `git branch --show-current`) with ANSI color-coded status reporting.
-
-\- \*\*Batch Git Execution (`gexec`):\*\* Dispatches arbitrary Git commands across all detected repositories simultaneously.
-
-\- \*\*Native OS Fallback:\*\* Unrecognized commands are delegated directly to the host operating system subprocess runner.
-
-
-
-\---
-
-
-
-\## Built-In Commands
-
-
+## Built-In Commands
 
 | Command | Arguments | Description |
-
-|---|---|---|
-
-| `repos` | None | Recursively scans for Git repos and prints branch \& clean/dirty state |
-
-| `gexec` | `<git\_subcmd>` | Runs a Git command (e.g. `gexec pull`, `gexec fetch -p`) in all repos |
-
-| `cd` | `<path>` | Changes working directory (supports paths with spaces) |
-
-| `pwd` | None | Displays current working directory |
-
-| `ls` | None | Lists directory contents |
-
-| `clear` | None | Clears the terminal screen |
-
-| `echo` | `\[text]` | Prints arguments to the terminal |
-
-| `help` | None | Displays the interactive command menu |
-
-| `exit` | None | Closes the shell |
-
-
-
-\---
-
-
-
-\## Getting Started
-
-
-
-\### Prerequisites
-
-\- Python 3.10+
-
-\- Git installed and available in system `PATH`
-
-
-
-\### Running the Shell
-
-```bash
-
-python mycli.py
-
+| :--- | :--- | :--- |
+| `repos` | None | Recursively scans for repositories and displays branch name and clean/dirty status. |
+| `gexec` | `<git_subcommand>` | Dispatches an arbitrary Git command across every detected repository. |
+| `cd` | `<path>` | Changes working directory (natively supports paths with spaces). |
+| `pwd` | None | Prints the current working directory path. |
+| `ls` | None | Lists items within the current working directory. |
+| `clear` | None | Wipes the terminal screen buffer. |
+| `echo` | `[text]` | Prints input strings to stdout. |
+| `help` | None | Displays the interactive command guide. |
+| `exit
