@@ -19,8 +19,8 @@ Built entirely with Python's standard library, it combines an interactive REPL w
 
 - **Zero Third-Party Dependencies:** Implemented exclusively using Python's built-in `os`, `sys`, and `subprocess` modules.
 - **Command Dispatch Architecture:** Uses a dictionary-based dispatch table for clean command routing, with average O(1) command lookup.
-- **Pruned Tree Traversal:** Uses `os.walk()` to recursively discover Git repositories while pruning internal `.git` directories to avoid unnecessary traversal.
-- **Git CLI Integration:** Uses machine-readable Git output (`--porcelain`, `--show-current`) for reliable working-tree status and branch detection.
+- **Pruned Tree Traversal:** Uses `os.walk()` to recursively discover Git repositories while pruning internal `.git` directories.
+- **Git CLI Integration:** Uses machine-readable Git output (`--porcelain`, `--show-current`) for working-tree status and branch detection.
 - **Batch Execution:** Dispatches Git commands across all discovered repositories through a single command.
 - **Native OS Fallback:** Delegates unrecognized commands to the host operating system.
 
@@ -32,7 +32,7 @@ Built entirely with Python's standard library, it combines an interactive REPL w
 | :--- | :--- | :--- |
 | `repos` | None | Discovers repositories and displays their branch and working-tree status. |
 | `gexec` | `<git_subcmd>` | Executes a Git command across every detected repository. |
-| `cd` | `<path>` | Changes the current working directory, supporting paths with spaces. |
+| `cd` | `<path>` | Changes the current working directory. |
 | `pwd` | None | Prints the current working directory. |
 | `ls` | None | Lists items in the current directory. |
 | `clear` | None | Clears the terminal screen. |
@@ -44,12 +44,26 @@ Built entirely with Python's standard library, it combines an interactive REPL w
 
 ## Quickstart
 
-### Prerequisites
+### Option 1: Standalone Executable (Windows)
+
+No Python installation required.
+
+1. Download `mysh.exe` from the [`dist`](dist/) directory.
+2. Open PowerShell or Command Prompt in the downloaded file's directory.
+3. Run:
+
+```powershell
+.\mysh.exe
+```
+
+**Requirement:** Git must be installed and accessible through the system `PATH`.
+
+### Option 2: Run from Source
+
+#### Prerequisites
 
 - Python 3.10 or newer
 - Git installed and accessible through the system `PATH`
-
-### Running Locally
 
 Clone the repository and launch the script:
 
@@ -58,6 +72,8 @@ git clone https://github.com/AymenChebabhi/mysh.git
 cd mysh
 python mycli.py
 ```
+
+---
 
 ## Usage Examples
 
@@ -89,7 +105,7 @@ gexec branch --show-current
 - Process management and subprocess communication
 - Git command execution and machine-readable output parsing
 - Cross-platform filesystem and terminal operations
-- Zero-dependency application design
+- Standalone application packaging with PyInstaller
 
 ---
 
@@ -100,7 +116,9 @@ gexec branch --show-current
 | Language | Python |
 | Minimum Version | Python 3.10 |
 | Dependencies | Python Standard Library only |
-| Platforms | Windows, Linux, macOS |
+| Platforms | Windows, Linux, macOS (source) |
+| Windows Distribution | Standalone executable |
+| Packaging | PyInstaller |
 
 ---
 

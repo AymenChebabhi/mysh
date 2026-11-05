@@ -81,14 +81,16 @@ COMMANDS = {
 }
 
 
+
 while True:
-    while True:
-        try:
-            user_input = input(f"{os.getcwd()} mysh> ")
-        except (KeyboardInterrupt, EOFError):
-            print()
-            continue
+    try:
+        user_input = input(f"{os.getcwd()} mysh> ")
+    except (KeyboardInterrupt, EOFError):
+        print()
+        continue
+
     parts = user_input.split()
+
     if not parts:
         continue
 
@@ -98,11 +100,11 @@ while True:
     if cmd_name == "exit":
         break
     elif cmd_name in COMMANDS:
-        # Look up the function in the dictionary and call it with args!
         COMMANDS[cmd_name](args)
     else:
         try:
             subprocess.run(parts)
         except FileNotFoundError:
             print(f"Command not found: {cmd_name}")
+
 

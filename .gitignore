@@ -1,10 +1,18 @@
-# Python bytecode & environments
+# Python
 __pycache__/
-*.pyc
-venv/
-.env
+*.py[cod]
 
-# PyInstaller build artifacts
-dist/
+# Virtual environments
+.venv/
+venv/
+
+# PyInstaller
 build/
-*.spec
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
