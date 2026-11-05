@@ -1,15 +1,11 @@
 # mysh
 
-<p align="center">
-  <strong>A lightweight, zero-dependency interactive REPL and batch Git workspace manager built from scratch in Python.</strong>
-</p>
+**A lightweight, zero-dependency interactive REPL and batch Git workspace manager built from scratch in Python.**
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white" alt="Python Version" />
-  <img src="https://img.shields.io/badge/Git-Plumbing%20API-F05032?style=flat&logo=git&logoColor=white" alt="Git" />
-  <img src="https://img.shields.io/badge/Dependencies-0%20(Standard%20Lib)-success" alt="Dependencies" />
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey" alt="Platform" />
-</p>
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
+![Git](https://img.shields.io/badge/Git-Plumbing%20API-F05032?style=flat&logo=git&logoColor=white)
+![Dependencies](https://img.shields.io/badge/Dependencies-0%20(Standard%20Lib)-success)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 
 ---
 
@@ -31,11 +27,27 @@
 | Command | Arguments | Description |
 | :--- | :--- | :--- |
 | `repos` | None | Recursively scans for repositories and displays branch name and clean/dirty status. |
-| `gexec` | `<git_subcommand>` | Dispatches an arbitrary Git command across every detected repository. |
+| `gexec` | `<git_subcmd>` | Dispatches an arbitrary Git command across every detected repository. |
 | `cd` | `<path>` | Changes working directory (natively supports paths with spaces). |
 | `pwd` | None | Prints the current working directory path. |
 | `ls` | None | Lists items within the current working directory. |
 | `clear` | None | Wipes the terminal screen buffer. |
 | `echo` | `[text]` | Prints input strings to stdout. |
 | `help` | None | Displays the interactive command guide. |
-| `exit
+| `exit` | None | Terminates the REPL session cleanly. |
+
+---
+
+## Quickstart
+
+### Prerequisites
+- Python 3.10 or newer
+- Git installed and accessible via system `PATH`
+
+### Running Locally
+Clone the repository and launch the script directly:
+
+```bash
+git clone [https://github.com/AymenChebabhi/mysh.git](https://github.com/AymenChebabhi/mysh.git)
+cd mysh
+python mycli.py
